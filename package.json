@@ -8,6 +8,7 @@
     "back:dev": "tsx watch src/server.ts",
     "back:prod": "pnpm tsx watch src/server.ts",
     "back:build": "tsup src",
+    "build": "esbuild dist/index.ts --bundle --outfile=public/index.js",
     "back:test": "vitest",
     "back:docker-up": "docker compose -f src/infra/compose.yaml up -d",
     "back:docker-down": "docker compose -f src/infra/compose.yaml down",
