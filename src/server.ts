@@ -37,9 +37,9 @@ const FRONT_PORT = 5173;
 
 app.use(
   cors({
-    origin: [`http://localhost:5173`, `http://localhost:5174`],
+    origin: "*",
     methods: ["GET", "POST", "DELETE"],
-  }),
+  })
 );
 
 app.use(express.json());
