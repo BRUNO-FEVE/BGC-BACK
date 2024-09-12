@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import database from "src/infra/database";
+import database from "infra/database";
 import { z } from "zod";
 
 const getAllUsers = async (req: Request, res: Response) => {
@@ -19,7 +19,7 @@ const getUserById = async (req: Request, res: Response) => {
     const userId = req.params.id;
     const response = await database.query(
       `SELECT * FROM "User" WHERE id = $1`,
-      [userId], // what am i doing wrong here?
+      [userId] // what am i doing wrong here?
     );
 
     const user = response?.rows[0];

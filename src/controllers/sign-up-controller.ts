@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import database from "src/infra/database";
+import database from "infra/database";
 import { z } from "zod";
 import { v4 as uuid } from "uuid";
 import bcrypt from "bcrypt";
@@ -31,7 +31,7 @@ const signUp = async (req: Request, res: Response) => {
         passwordProtected,
         bodyValidated.company || null,
         bodyValidated.role || null,
-      ],
+      ]
     );
 
     const createdUser = response?.rows[0];

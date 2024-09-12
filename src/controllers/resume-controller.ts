@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import fs from "fs";
-import database from "src/infra/database";
+import database from "infra/database";
 import { openai } from "src/models/openai";
 import { v4 as uuid } from "uuid";
 
@@ -43,7 +43,7 @@ const transcribeAudio = async (req: Request, res: Response) => {
 
     await database.query(
       `INSERT INTO "Transcription" (id, id_metting, transcription) VALUES ($1, $2, $3)`,
-      [uuid(), idMeeting, transcriptionText],
+      [uuid(), idMeeting, transcriptionText]
     );
 
     fs.unlinkSync(file.path);
@@ -73,7 +73,7 @@ const generateResume = async (req: Request, res: Response) => {
 
     const response = await database.query(
       `SELECT * FROM "Transcription" WHERE id_metting = $1 ;`,
-      [mettingId],
+      [mettingId]
     );
 
     const transcriptions = response?.rows

@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import database from "src/infra/database";
+import database from "infra/database";
 import "dotenv/config";
 
 const getStatus = async (req: Request, res: Response) => {
@@ -9,7 +9,7 @@ const getStatus = async (req: Request, res: Response) => {
   const databaseVersion = databaseVersionResponse?.rows[0].server_version;
 
   const databaseMaxConnectionsResponse = await database.query(
-    "SHOW max_connections;",
+    "SHOW max_connections;"
   );
   const databaseMaxConnections =
     databaseMaxConnectionsResponse?.rows[0].max_connections;
@@ -17,7 +17,7 @@ const getStatus = async (req: Request, res: Response) => {
   const databaseName = process.env.POSTGRES_DB ?? "";
   const databaseOpenedConnectionsResponse = await database.query(
     "SELECT count(*) FROM pg_stat_activity WHERE datname = $1;",
-    [databaseName],
+    [databaseName]
   );
   const databaseOpenedConnections =
     databaseOpenedConnectionsResponse?.rows[0].count;

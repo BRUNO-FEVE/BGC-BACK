@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import database from "src/infra/database";
+import database from "infra/database";
 import { z } from "zod";
 import bcrypt from "bcrypt";
 
@@ -13,7 +13,7 @@ const signIn = async (req: Request, res: Response) => {
     const bodyValidated = SignInSchema.parse(req.body);
     const response = await database.query(
       `SELECT * FROM "User" WHERE email = $1`,
-      [bodyValidated.email],
+      [bodyValidated.email]
     );
 
     const user = response?.rows[0];
@@ -24,7 +24,7 @@ const signIn = async (req: Request, res: Response) => {
 
     const passwordMatch = await bcrypt.compare(
       bodyValidated.password,
-      user.password,
+      user.password
     );
 
     if (!passwordMatch) {
