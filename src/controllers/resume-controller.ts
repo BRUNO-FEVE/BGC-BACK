@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import fs from "fs";
-import database from "infra/database";
+import database from "src/infra/database";
 import { openai } from "src/models/openai";
 import { v4 as uuid } from "uuid";
 

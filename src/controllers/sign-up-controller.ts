@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import database from "infra/database";
+import database from "src/infra/database";
 import { z } from "zod";
 import { v4 as uuid } from "uuid";
 import bcrypt from "bcrypt";

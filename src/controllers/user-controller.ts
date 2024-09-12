@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import database from "infra/database";
+import database from "src/infra/database";
 import { z } from "zod";
 
 const getAllUsers = async (req: Request, res: Response) => {
